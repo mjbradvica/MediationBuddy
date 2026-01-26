@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="samples/MediationBuddy.Samples.API/MediationBuddy.Samples.API.csproj" Id="1635cf86-439f-47b6-ab99-23b9abf2d141" />
+  <Project Path="source/MediationBuddy/MediationBuddy.csproj" />
+  <Project Path="tests/MediationBuddy.Tests/MediationBuddy.Tests.csproj" Id="d9d356f7-12c5-4565-8935-94dfe39d84ba" />
+</Solution>
