@@ -31,5 +31,18 @@ namespace MediationBuddy.Tests.Registration
 
             Assert.IsNotNull(mediation);
         }
+
+        /// <summary>
+        /// Service collection is returned from registration.
+        /// </summary>
+        [TestMethod]
+        public void ServiceCollectionIsReturned()
+        {
+            var services = new ServiceCollection();
+
+            var collection = services.AddMediationBuddy(Assembly.GetExecutingAssembly());
+
+            Assert.AreEqual(services, collection);
+        }
     }
 }
