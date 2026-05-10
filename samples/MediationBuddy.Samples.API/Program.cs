@@ -4,6 +4,9 @@
 
 namespace MediationBuddy.Samples.API
 {
+    using NMediation.Dependencies;
+    using System.Reflection;
+
     /// <summary>
     /// Sample entry program.
     /// </summary>
@@ -18,8 +21,13 @@ namespace MediationBuddy.Samples.API
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
+            builder.Services.AddNMediation(Assembly.GetExecutingAssembly());
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 

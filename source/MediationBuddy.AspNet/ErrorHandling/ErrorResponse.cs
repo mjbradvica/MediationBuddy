@@ -77,7 +77,7 @@ namespace MediationBuddy.AspNet.ErrorHandling
         /// <returns>A new ErrorResponse instance.</returns>
         public static ErrorResponse ValidationError(Uri type, IEnumerable<string> errors, Uri instance)
         {
-            string aggregateErrors = errors.Aggregate((final, next) => $"{final} {next}");
+            var aggregateErrors = errors.Aggregate((final, next) => $"{final} {next}");
 
             return new ErrorResponse(
                 type,

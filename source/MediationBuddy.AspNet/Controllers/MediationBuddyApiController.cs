@@ -13,6 +13,7 @@ namespace MediationBuddy.AspNet.Controllers
     /// <summary>
     /// Base controller for passing and returning <see cref="IEnvelopePayload{T}"/> instances.
     /// </summary>
+    [ApiController]
     public class MediationBuddyApiController : ControllerBase
     {
         private readonly ErrorTypes _errorTypes;
@@ -193,10 +194,10 @@ namespace MediationBuddy.AspNet.Controllers
                 ApplicationStatus.AccountHasNotBeenVerified => StatusCode(StatusCodes.Status403Forbidden, ErrorResponse.FromEnvelope(_errorTypes.AccountHasNotBeenVerified, StatusCodes.Status403Forbidden, envelope, currentRoute)),
                 ApplicationStatus.EmailHasNotBeenVerified => StatusCode(StatusCodes.Status403Forbidden, ErrorResponse.FromEnvelope(_errorTypes.EmailHasNotBeenVerified, StatusCodes.Status403Forbidden, envelope, currentRoute)),
                 ApplicationStatus.TwoFactorCodeIncorrect => BadRequest(ErrorResponse.FromEnvelope(_errorTypes.TwoFactorCodeIncorrect, StatusCodes.Status400BadRequest, envelope, currentRoute)),
-                ApplicationStatus.UnauthorizedUser => StatusCode(StatusCodes.Status401Unauthorized, ErrorResponse.FromEnvelope(_errorTypes.UnauthorizedUser, StatusCodes.Status401Unauthorized, envelope, currentRoute)),
+                ApplicationStatus.UnauthorizedUser => Unauthorized(ErrorResponse.FromEnvelope(_errorTypes.UnauthorizedUser, StatusCodes.Status401Unauthorized, envelope, currentRoute)),
                 ApplicationStatus.ContentIsForbidden => StatusCode(StatusCodes.Status403Forbidden, ErrorResponse.FromEnvelope(_errorTypes.ContentIsForbidden, StatusCodes.Status403Forbidden, envelope, currentRoute)),
-                ApplicationStatus.GeneralAuthError => StatusCode(StatusCodes.Status401Unauthorized, ErrorResponse.FromEnvelope(_errorTypes.GeneralAuthError, StatusCodes.Status401Unauthorized, envelope, currentRoute)),
-                ApplicationStatus.AuthenticationChallenged => StatusCode(StatusCodes.Status401Unauthorized, ErrorResponse.FromEnvelope(_errorTypes.AuthenticationChallenged, StatusCodes.Status401Unauthorized, envelope, currentRoute)),
+                ApplicationStatus.GeneralAuthError => Unauthorized(ErrorResponse.FromEnvelope(_errorTypes.GeneralAuthError, StatusCodes.Status401Unauthorized, envelope, currentRoute)),
+                ApplicationStatus.AuthenticationChallenged => Unauthorized(ErrorResponse.FromEnvelope(_errorTypes.AuthenticationChallenged, StatusCodes.Status401Unauthorized, envelope, currentRoute)),
                 _ => StatusCode(StatusCodes.Status500InternalServerError, ErrorResponse.InternalError(_errorTypes.General, currentRoute)),
             };
         }
