@@ -9,7 +9,7 @@ namespace MediationBuddy.Tests.Common
     using System.Threading.Tasks;
 
     /// <inheritdoc />
-    internal class TestEmptyHandler : EmptyEnvelopeHandler<TestEmptyRequest>
+    internal sealed class TestEmptyHandler : EmptyEnvelopeHandler<TestEmptyRequest>
     {
         /// <inheritdoc/>
         public override Task<IEnvelope<Empty>> Handle(TestEmptyRequest payload, CancellationToken cancellationToken)

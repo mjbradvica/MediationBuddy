@@ -7,7 +7,7 @@ namespace MediationBuddy.Tests.Controllers
     using MediationBuddy.AspNet.Controllers;
 
     /// <inheritdoc />
-    internal class TestApiErrorController : BaseApiErrorController
+    internal sealed class TestApiErrorController : BaseApiErrorController
     {
     }
 }

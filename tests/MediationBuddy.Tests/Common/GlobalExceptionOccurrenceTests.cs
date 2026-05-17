@@ -2,7 +2,7 @@
 // Copyright (c) Simplex Software LLC. All rights reserved.
 // </copyright>
 
-namespace MediationBuddy.Tests.Shared
+namespace MediationBuddy.Tests.Common
 {
     /// <summary>
     /// Tests for the <see cref="GlobalExceptionOccurrence"/> class.

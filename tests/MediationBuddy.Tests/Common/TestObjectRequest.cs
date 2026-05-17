@@ -5,7 +5,7 @@
 namespace MediationBuddy.Tests.Common
 {
     /// <inheritdoc />
-    internal class TestObjectRequest : IEnvelopePayload<TestResponse>
+    internal sealed class TestObjectRequest : IEnvelopePayload<TestResponse>
     {
     }
 }
