@@ -81,19 +81,6 @@ namespace MediationBuddy.AspNet.Controllers
         /// <param name="responseFunc">A <see cref="Func{TResult}"/> that yields a <see cref="Uri"/>.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/>.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation that yields a <see cref="IActionResult"/>.</returns>
-        protected async Task<IActionResult> ExecuteAccepted<TResponse>(IPayload<IEnvelope<TResponse>> payload, Func<TResponse, Uri> responseFunc, CancellationToken cancellationToken = default)
-        {
-            return await ExecuteRequest(payload, response => new AcceptedResult(responseFunc.Invoke(response), null), cancellationToken);
-        }
-
-        /// <summary>
-        /// Handles a request with a pre-defined <see cref="AcceptedResult"/>.
-        /// </summary>
-        /// <typeparam name="TResponse">The type of the envelope response.</typeparam>
-        /// <param name="payload">A <see cref="IPayload{TResponse}"/> that returns an <see cref="IEnvelope{TResponse}"/> instance.</param>
-        /// <param name="responseFunc">A <see cref="Func{TResult}"/> that yields a <see cref="Uri"/>.</param>
-        /// <param name="cancellationToken">A <see cref="CancellationToken"/>.</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation that yields a <see cref="IActionResult"/>.</returns>
         protected async Task<IActionResult> ExecuteAcceptedObject<TResponse>(IPayload<IEnvelope<TResponse>> payload, Func<TResponse, Uri> responseFunc, CancellationToken cancellationToken = default)
         {
             return await ExecuteRequest(payload, response => new AcceptedResult(responseFunc.Invoke(response), response), cancellationToken);

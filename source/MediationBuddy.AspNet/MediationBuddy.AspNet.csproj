@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="NMediation" Version="0.9.1" />
+    <PackageReference Include="NMediation" Version="0.9.3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="NMediation.Abstractions" Version="0.9.1" />
+    <PackageReference Include="NMediation.Abstractions" Version="0.9.3" />
   </ItemGroup>
 </Project>
