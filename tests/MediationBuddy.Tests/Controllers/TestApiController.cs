@@ -11,7 +11,7 @@ namespace MediationBuddy.Tests.Controllers
     using NMediation.Abstractions;
 
     /// <inheritdoc />
-    internal class TestApiController : MediationBuddyApiController
+    internal sealed class TestApiController : MediationBuddyApiController
     {
         /// <inheritdoc />
         public TestApiController(IMediation mediation, ErrorTypes? errorTypes = null, Func<ApiErrorWrapper, IActionResult?>? extraOptions = null)
