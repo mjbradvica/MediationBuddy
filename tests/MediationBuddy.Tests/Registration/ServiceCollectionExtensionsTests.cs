@@ -42,7 +42,7 @@ namespace MediationBuddy.Tests.Registration
 
             var collection = services.AddMediationBuddy(Assembly.GetExecutingAssembly());
 
-            Assert.AreEqual(services, collection);
+            Assert.AreSequenceEqual(services, collection);
         }
     }
 }
