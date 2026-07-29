@@ -19,7 +19,7 @@ namespace MediationBuddy.Tests.Controllers
     public class MediationBuddyApiControllerTests
     {
         private readonly Mock<IMediation> _mediator;
-        private readonly TestApiController _apiController;
+        private TestApiController _apiController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MediationBuddyApiControllerTests"/> class.
@@ -388,12 +388,40 @@ namespace MediationBuddy.Tests.Controllers
         [TestMethod]
         public async Task OnValidationFailureHasCorrectResponseType()
         {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ThrowsAsync(new ArgumentNullException());
+
             var result = await _apiController.Handle(new TestObjectRequest
             {
                 RequestInstance = null!,
             });
 
             Assert.IsInstanceOfType<BadRequestObjectResult>(result);
+        }
+
+        /// <summary>
+        /// Custom error has correct response.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task CustomErrorHandlingIsCorrect()
+        {
+            static IActionResult CustomError(ApiErrorWrapper _) => new ForbidResult();
+
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ReturnsAsync(EnvelopeFactory.GeneralError<TestResponse>());
+
+            _apiController = new TestApiController(_mediator.Object, null, CustomError)
+            {
+                ControllerContext = new ControllerContext
+                {
+                    HttpContext = new DefaultHttpContext(),
+                },
+            };
+
+            var result = await _apiController.NoContentResult();
+
+            Assert.IsInstanceOfType<ForbidResult>(result);
         }
 
         private async Task AssertStatusCorrect<TResponseType>(IEnvelope<TestResponse> response)
