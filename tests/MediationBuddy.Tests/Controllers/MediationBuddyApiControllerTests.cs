@@ -366,6 +366,36 @@ namespace MediationBuddy.Tests.Controllers
             Assert.IsInstanceOfType<NoContentResult>(result);
         }
 
+        /// <summary>
+        /// On Exception has the correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task OnExceptionHasCorrectResponseType()
+        {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ThrowsAsync(new ArgumentNullException());
+
+            var result = await _apiController.NoContentResult();
+
+            Assert.IsInstanceOfType<ObjectResult>(result);
+        }
+
+        /// <summary>
+        /// Validation failure returns correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task OnValidationFailureHasCorrectResponseType()
+        {
+            var result = await _apiController.Handle(new TestObjectRequest
+            {
+                RequestInstance = null!,
+            });
+
+            Assert.IsInstanceOfType<BadRequestObjectResult>(result);
+        }
+
         private async Task AssertStatusCorrect<TResponseType>(IEnvelope<TestResponse> response)
             where TResponseType : ObjectResult
         {
