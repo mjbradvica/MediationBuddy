@@ -13,6 +13,6 @@ namespace MediationBuddy.Tests.Common
         /// Gets the request instance property.
         /// </summary>
         [Required(AllowEmptyStrings = false)]
-        public string RequestInstance { get; init; } = string.Empty;
+        public string RequestInstance { get; init; } = "Hello!";
     }
 }
