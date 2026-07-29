@@ -30,36 +30,60 @@ namespace MediationBuddy.Tests.Controllers
             return await ExecuteOkObject(request);
         }
 
+        /// <summary>
+        /// Test ok result.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpGet("ok-result")]
         public async Task<IActionResult> OkResult()
         {
             return await ExecuteOk(new TestObjectRequest());
         }
 
+        /// <summary>
+        /// Test ok object result.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpGet("ok-object-result")]
         public async Task<IActionResult> OkObjectResult()
         {
             return await ExecuteOkObject(new TestObjectRequest());
         }
 
+        /// <summary>
+        /// Test accepted result.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost("accepted-result")]
         public async Task<IActionResult> AcceptedResult()
         {
             return await ExecuteAccepted(new TestObjectRequest());
         }
 
+        /// <summary>
+        /// Test accepted object result.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost("accepted-object-result")]
         public async Task<IActionResult> AcceptedObjectResult()
         {
             return await ExecuteAcceptedObject(new TestObjectRequest(), _ => new Uri("https://www.test.com"));
         }
 
+        /// <summary>
+        /// Test created object result.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpPost("created-object-result")]
         public async Task<IActionResult> CreatedObjectResult()
         {
             return await ExecuteCreatedObject(new TestObjectRequest(), _ => new Uri("https://www.test.com"));
         }
 
+        /// <summary>
+        /// Test no content result.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [HttpDelete("no-content-result")]
         public async Task<IActionResult> NoContentResult()
         {
