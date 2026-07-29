@@ -406,12 +406,10 @@ namespace MediationBuddy.Tests.Controllers
         [TestMethod]
         public async Task CustomErrorHandlingIsCorrect()
         {
-            static IActionResult CustomError(ApiErrorWrapper _) => new ForbidResult();
-
             _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
                 .ReturnsAsync(EnvelopeFactory.GeneralError<TestResponse>());
 
-            _apiController = new TestApiController(_mediator.Object, null, CustomError)
+            _apiController = new TestApiController(_mediator.Object, null, _ => new ForbidResult())
             {
                 ControllerContext = new ControllerContext
                 {
