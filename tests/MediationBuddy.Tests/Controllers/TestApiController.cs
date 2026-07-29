@@ -29,5 +29,41 @@ namespace MediationBuddy.Tests.Controllers
         {
             return await ExecuteOkObject(request);
         }
+
+        [HttpGet("ok-result")]
+        public async Task<IActionResult> OkResult()
+        {
+            return await ExecuteOk(new TestObjectRequest());
+        }
+
+        [HttpGet("ok-object-result")]
+        public async Task<IActionResult> OkObjectResult()
+        {
+            return await ExecuteOkObject(new TestObjectRequest());
+        }
+
+        [HttpPost("accepted-result")]
+        public async Task<IActionResult> AcceptedResult()
+        {
+            return await ExecuteAccepted(new TestObjectRequest());
+        }
+
+        [HttpPost("accepted-object-result")]
+        public async Task<IActionResult> AcceptedObjectResult()
+        {
+            return await ExecuteAcceptedObject(new TestObjectRequest(), _ => new Uri("https://www.test.com"));
+        }
+
+        [HttpPost("created-object-result")]
+        public async Task<IActionResult> CreatedObjectResult()
+        {
+            return await ExecuteCreatedObject(new TestObjectRequest(), _ => new Uri("https://www.test.com"));
+        }
+
+        [HttpDelete("no-content-result")]
+        public async Task<IActionResult> NoContentResult()
+        {
+            return await ExecuteNoContent(new TestObjectRequest());
+        }
     }
 }

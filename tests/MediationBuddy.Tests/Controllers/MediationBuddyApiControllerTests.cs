@@ -276,6 +276,96 @@ namespace MediationBuddy.Tests.Controllers
             await AssertStatusCorrect<ObjectResult>(new Envelope<TestResponse>(999, string.Empty, string.Empty));
         }
 
+        /// <summary>
+        /// Ok has the correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task ExecuteOkHasCorrectResponseType()
+        {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ReturnsAsync(EnvelopeFactory.Success(new TestResponse()));
+
+            var result = await _apiController.OkResult();
+
+            Assert.IsInstanceOfType<OkResult>(result);
+        }
+
+        /// <summary>
+        /// Ok Object has the correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task ExecuteOkObjectHasCorrectResponseType()
+        {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ReturnsAsync(EnvelopeFactory.Success(new TestResponse()));
+
+            var result = await _apiController.OkObjectResult();
+
+            Assert.IsInstanceOfType<OkObjectResult>(result);
+        }
+
+        /// <summary>
+        /// Accepted has the correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task ExecuteAcceptedHasCorrectResponseType()
+        {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ReturnsAsync(EnvelopeFactory.Success(new TestResponse()));
+
+            var result = await _apiController.AcceptedResult();
+
+            Assert.IsInstanceOfType<AcceptedResult>(result);
+        }
+
+        /// <summary>
+        /// Accepted object has the correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task ExecuteAcceptedObjectHasCorrectResponseType()
+        {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ReturnsAsync(EnvelopeFactory.Success(new TestResponse()));
+
+            var result = await _apiController.AcceptedObjectResult();
+
+            Assert.IsInstanceOfType<AcceptedResult>(result);
+        }
+
+        /// <summary>
+        /// Created object has the correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task ExecuteCreatedObjectHasCorrectResponseType()
+        {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ReturnsAsync(EnvelopeFactory.Success(new TestResponse()));
+
+            var result = await _apiController.CreatedObjectResult();
+
+            Assert.IsInstanceOfType<CreatedResult>(result);
+        }
+
+        /// <summary>
+        /// No content has the correct response type.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [TestMethod]
+        public async Task ExecuteNoContentHasCorrectResponseType()
+        {
+            _mediator.Setup(x => x.Mediate(It.IsAny<TestObjectRequest>(), CancellationToken.None))
+                .ReturnsAsync(EnvelopeFactory.Success(new TestResponse()));
+
+            var result = await _apiController.NoContentResult();
+
+            Assert.IsInstanceOfType<NoContentResult>(result);
+        }
+
         private async Task AssertStatusCorrect<TResponseType>(IEnvelope<TestResponse> response)
             where TResponseType : ObjectResult
         {
