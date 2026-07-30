@@ -6,7 +6,7 @@ The current versions are supported; MediationBuddy follows Microsoft's policy.
 
 | Version | Dotnet | Supported          |
 | ------- | ------ | ------------------ |
-| >0.7.0  | 8/9/10 | :white_check_mark: |
+| >0.9.0  | 8/9/10 | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
