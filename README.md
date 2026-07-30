@@ -80,10 +80,9 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.(Assembly.GetExecutingAssembly());
+        builder.Services.AddMediationBuddy(Assembly.GetExecutingAssembly());
 
         // Continue setup below
     }
 }
 ```
-

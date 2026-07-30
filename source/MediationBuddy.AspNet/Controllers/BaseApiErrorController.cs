@@ -71,7 +71,7 @@ namespace MediationBuddy.AspNet.Controllers
         [HttpGet("PreConditionNotMet")]
         public virtual IActionResult PreConditionNotMet()
         {
-            return Ok("A pre-condition could not be satisfied and therefor the operation could not be completed at this time. Your request probably passed validation but another condition was not correct.");
+            return Ok("A pre-condition could not be satisfied and therefore the operation could not be completed at this time. Your request probably passed validation but another condition was not correct.");
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace MediationBuddy.AspNet.Controllers
         [HttpGet("PostConditionNotMet")]
         public virtual IActionResult PostConditionNotMet()
         {
-            return Ok("A post-condition could not be satisfied and therefor the operation could not be completed at this time. Your request probably passed validation but another condition was not correct.");
+            return Ok("A post-condition could not be satisfied and therefore the operation could not be completed at this time. Your request probably passed validation but another condition was not correct.");
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace MediationBuddy.AspNet.Controllers
         [HttpGet("UnauthorizedUser")]
         public virtual IActionResult UnauthorizedUser()
         {
-            return Ok("The user is unauthorized and therefor the request could not be honored. Please log in to the server or checked that your have not been automatically logged out.");
+            return Ok("The user is unauthorized and therefore the request could not be honored. Please log in to the server or checked that your have not been automatically logged out.");
         }
 
         /// <summary>
